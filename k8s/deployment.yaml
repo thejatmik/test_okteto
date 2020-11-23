@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api_text
+  name: api-text
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: api_text
     spec:
       containers:
-      - name: api_text
+      - name: api-text
         image: registry.cloud.okteto.net/thejatmik/api_text:latest
         ports:
           - containerPort: 6969
