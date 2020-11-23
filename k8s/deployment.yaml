@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: api_text
-        image: thejatmik/api_text:latest
+        image: registry.cloud.okteto.net/thejatmik/api_text:latest
         ports:
           - containerPort: 6969
