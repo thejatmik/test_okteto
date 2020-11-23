@@ -1,0 +1,3 @@
+deploy:
+  - okteto build -t thejatmik/api_text:latest
+  - kubectl apply -f k8s

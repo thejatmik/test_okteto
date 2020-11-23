@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api_text
+spec:
+  selector:
+    matchLabels:
+      app: api_text
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api_text
+    spec:
+      containers:
+      - name: api_text
+        image: thejatmik/api_text:latest
+        ports:
+          - containerPort: 6969

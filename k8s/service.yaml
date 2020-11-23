@@ -1,0 +1,11 @@
+appVersion: v1
+kind: Service
+metadata:
+  name: api_text
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 6969
+  selector:
+    app: api_text
