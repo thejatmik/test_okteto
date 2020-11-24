@@ -11,6 +11,6 @@ USER node
 RUN rm -rf node_modules
 RUN npm ci
 
-EXPOSE 6969
+EXPOSE 6968
 
 ENTRYPOINT ["npm", "start"]
