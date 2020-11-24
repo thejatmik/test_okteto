@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = 6968;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -11,6 +12,6 @@ app.get('/test', (req, res) => {
   });
 });
 
-app.listen(6969, () => {
-  console.log('on port 6969');
+app.listen(PORT, () => {
+  console.log(`on port ${PORT}`);
 });
