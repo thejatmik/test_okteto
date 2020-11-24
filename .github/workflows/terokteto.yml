@@ -25,7 +25,3 @@ jobs:
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@master
 
-    - name: "Apply k8s"
-      uses: okteto/apply@master
-      with:
-        manifest: deployment.yaml
