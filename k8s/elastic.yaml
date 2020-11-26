@@ -1,11 +1,23 @@
-apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: elastic
+  name: elasticsearch
 spec:
-  version: 7.10.0
-  nodeSets:
-  - name: default
-    count: 1
-    config:
-      node.store.allow_mmap: false
+  serviceName: elastic01
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elastic01
+  template:
+    metadata:
+      labels:
+        app: elastic01
+    spec:
+      containers:
+      - name: elastic
+        image: docker.io/elasticsearch:7.9.3
+        ports:
+        - name: api-calls
+          containerPort: 9200
+        - name: custom-binary-protocol
+          containerPort: 9300
