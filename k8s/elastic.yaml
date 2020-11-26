@@ -19,5 +19,5 @@ spec:
         ports:
         - name: api-calls
           containerPort: 9200
-        - name: custom-binary-protocol
+        - name: binary-protocol
           containerPort: 9300
