@@ -22,7 +22,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-api
+  name: text-api
 spec:
   replicas: 1
   selector:
