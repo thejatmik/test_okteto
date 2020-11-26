@@ -5,7 +5,7 @@ metadata:
   name: mongodb
 type: Opaque
 data:
-  mongodb-root-pass: password
+  mongodb-root-password: password
   mongodb-password: passowrd
 ---
   apiVersion: apps/v1
@@ -37,7 +37,7 @@ data:
             valueFrom:
               secretKeyRef:
                 name: mongodb
-                key: mongodb-pass
+                key: mongodb-password
           - name: MONGODB_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
