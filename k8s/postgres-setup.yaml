@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: StorageClass
+metadata:
+  name: postgres-local
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer

@@ -4,15 +4,15 @@ kind: StatefulSet
 metadata:
   name: mongodb
 spec:
-  serviceName: mongodb
+  serviceName: mongodb01
   replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: mongodb01
   template:
     metadata:
       labels:
-        app: web
+        app: mongodb01
     spec:
       securityContext:
         fsGroup: 1001
