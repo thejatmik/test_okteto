@@ -1,23 +1,15 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: user-api
+  name: text-api
 spec:
-  replicas: 1
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 6969
   selector:
-    matchLabels:
-      app: user-api
-  template:
-    metadata:
-      labels:
-        app: user-api
-    spec:
-      containers:
-      - name: api-user
-        image: registry.cloud.okteto.net/thejatmik/api_user:latest
-        ports:
-        - containerPort: 6968
+    app: text-api
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,3 +30,4 @@ spec:
         image: registry.cloud.okteto.net/thejatmik/api_text:latest
         ports:
         - containerPort: 6969
+
