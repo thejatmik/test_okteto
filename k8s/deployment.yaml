@@ -14,10 +14,10 @@ spec:
         app: user-api
     spec:
       containers:
-      - name: api-user
-        image: registry.cloud.okteto.net/thejatmik/api_user:latest
-        ports:
-        - containerPort: 6968
+        - name: api-user
+          image: registry.cloud.okteto.net/thejatmik/api_user:latest
+          ports:
+            - containerPort: 6968
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,7 +33,7 @@ spec:
       labels:
         app: text-api
     spec:
-    - name: api-text
-      image: registry.cloud.okteto.net/thejatmik/api_text:latest
-      ports:
-      - containerPort: 6969
+      - name: api-text
+        image: registry.cloud.okteto.net/thejatmik/api_text:latest
+        ports:
+          - containerPort: 6969
