@@ -37,7 +37,7 @@ data:
             valueFrom:
               secretKeyRef:
                 name: mongodb
-                key: mongodb-password
+                key: mongodb-pass
           - name: MONGODB_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
