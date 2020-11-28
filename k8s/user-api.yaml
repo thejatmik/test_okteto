@@ -30,3 +30,15 @@ spec:
         image: registry.cloud.okteto.net/thejatmik/api_user:latest
         ports:
         - containerPort: 6968
+        env:
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: mongodb-password
+        - name: MONGODB_USERNAME
+          value: "okteto"
+        - name: MONGODB_DATABASE
+          value: "okteto"
+        - POSTGRES_PASSWORD
+          value: "postgres"
