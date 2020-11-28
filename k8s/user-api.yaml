@@ -40,5 +40,5 @@ spec:
           value: "okteto"
         - name: MONGODB_DATABASE
           value: "okteto"
-        - POSTGRES_PASSWORD
+        - name: POSTGRES_PASSWORD
           value: "postgres"
