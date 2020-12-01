@@ -43,7 +43,7 @@ spec:
         - name: MONGODB_HOST
           value: mongodb01
         - name: MONGODB_PORT
-          value: "8081"
+          value: "27017"
         - name: POSTGRES_PASSWORD
           value: "postgres"
         - name: POSTGRES_HOST
