@@ -19,16 +19,17 @@ const pool = new Pool({
 });
 
 let mongo;
-MongoClient.connect(mongo_, { useUnifiedTopology: true })
-  .then((client) => {
-    console.log(client);
-    mongo = client.db(mongoDatabase);
-  })
-  .catch((err) => {
+(async () => {
+  try {
+    mongo = await MongoClient.connect(mongo_, { useUnifiedTopology: true })
+    console.log(mongo);
+    mongo = mongo.db(mongoDatabase);
+    console.log(mongo);
+  } catch (error) {
     console.log('error mongoclient');
-    console.log(err);
-    console.log(mongoUrl);
-  });
+    console.log(error);
+  }
+})();
 
 module.exports = {
   pool,
