@@ -7,7 +7,7 @@ const mongoHost = process.env.MONGODB_HOST;
 const mongoPort = process.env.MONGODB_PORT;
 const mongoDatabase = process.env.MONGODB_DATABASE;
 
-const mongoUrl = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/${mongoDatabase}`;
+const mongoUrl = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}`;
 
 const pool = new Pool({
   user: process.env.POSTGRES_PASSWORD,
