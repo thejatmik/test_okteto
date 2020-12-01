@@ -35,7 +35,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mongodb
-              key: mongodb-root-password
+              key: mongodb-password
         - name: MONGODB_USERNAME
           value: "okteto"
         - name: MONGODB_DATABASE
