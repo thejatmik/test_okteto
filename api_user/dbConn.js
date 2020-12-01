@@ -18,6 +18,7 @@ const pool = new Pool({
 });
 
 let mongo;
+console.log(mongoUrl);
 MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   .then((client) => {
     mongo = client.db(mongoDatabase);
