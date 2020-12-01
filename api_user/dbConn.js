@@ -20,7 +20,7 @@ const pool = new Pool({
 let mongo;
 MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   .then((client) => {
-    mongo = client;
+    mongo = client.db(mongoDatabase);
   })
   .catch((err) => {
     console.log('error mongoclient');
