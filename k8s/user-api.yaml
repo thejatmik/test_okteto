@@ -40,6 +40,10 @@ spec:
           value: "okteto"
         - name: MONGODB_DATABASE
           value: "okteto"
+        - name: MONGODB_HOST
+          value: mongodb01
+        - name: MONGODB_PORT
+          value: 27071
         - name: POSTGRES_PASSWORD
           value: "postgres"
         - name: POSTGRES_HOST
