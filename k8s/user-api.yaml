@@ -42,3 +42,5 @@ spec:
           value: "okteto"
         - name: POSTGRES_PASSWORD
           value: "postgres"
+        - name: POSTGRES_HOST
+          value: postgres01
