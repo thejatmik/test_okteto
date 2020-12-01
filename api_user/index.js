@@ -1,8 +1,8 @@
 const express = require('express');
 const {
   pool,
-  mongo,
 } = require('./dbConn.js');
+const mongo = require('./dbConn.js').mongo();
 const app = express();
 const PORT = 6968;
 

@@ -18,20 +18,18 @@ const pool = new Pool({
   port: 5432,
 });
 
-let mongo;
-(async () => {
-  try {
-    mongo = await MongoClient.connect(mongo_, { useUnifiedTopology: true })
-    console.log(mongo);
-    mongo = mongo.db(mongoDatabase);
-    console.log(mongo);
-  } catch (error) {
-    console.log('error mongoclient');
-    console.log(error);
-  }
-})();
-
+let mongoDB;
+// let mongoClient;
 module.exports = {
   pool,
-  mongo,
+  connectMongo: () => {
+    return MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+      .then((client) => {
+        // mongoClient = client;
+        mongoDB = client.db(mongoDatabase);
+      });
+  },
+  mongo: () => {
+    return mongoDB;
+  },
 };
