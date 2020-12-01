@@ -2,7 +2,10 @@ const express = require('express');
 const {
   pool,
 } = require('./dbConn.js');
+
+require('./dbConn.js').connectMongo();
 const mongo = require('./dbConn.js').mongo();
+
 const app = express();
 const PORT = 6968;
 
