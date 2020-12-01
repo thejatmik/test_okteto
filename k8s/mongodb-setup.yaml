@@ -37,15 +37,9 @@ spec:
           runAsUser: 1001
         env:
         - name: MONGODB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongodb
-              key: mongodb-password
+          value: "password"
         - name: MONGODB_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongodb
-              key: mongodb-root-password
+          value: "password"
         - name: MONGODB_USERNAME
           value: "okteto"
         - name: MONGODB_SYSTEM_LOG_VERBOSITY
