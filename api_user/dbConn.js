@@ -21,6 +21,7 @@ const pool = new Pool({
 let mongo;
 MongoClient.connect(mongo_, { useUnifiedTopology: true })
   .then((client) => {
+    console.log(client);
     mongo = client.db(mongoDatabase);
   })
   .catch((err) => {
