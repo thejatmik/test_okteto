@@ -5,7 +5,7 @@ metadata:
   name: mongodb01
 spec:
   ports:
-  - port: 27071
+  - port: 8081
   selector:
     app: mongodb01
   clusterIP: None
@@ -59,7 +59,7 @@ spec:
           value: "no"
         ports:
         - name: mongodb
-          containerPort: 27071
+          containerPort: 27017
         volumeMounts:
         - name: data
           mountPath: /bitnami/mongodb
