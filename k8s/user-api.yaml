@@ -32,7 +32,9 @@ spec:
         - containerPort: 6968
         env:
         - name: MONGODB_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-password
         - name: MONGODB_USERNAME
           value: "okteto"
         - name: MONGODB_DATABASE

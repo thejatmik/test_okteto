@@ -7,7 +7,8 @@ const mongoHost = process.env.MONGODB_HOST;
 const mongoPort = process.env.MONGODB_PORT;
 const mongoDatabase = process.env.MONGODB_DATABASE;
 
-const mongoUrl = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}`;
+const mongoUrl = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/${mongoDatabase}`;
+const mongo_ = `mongodb://${mongoHost}:${mongoPort}/${mongoDatabase}`;
 
 const pool = new Pool({
   user: process.env.POSTGRES_PASSWORD,
@@ -18,14 +19,22 @@ const pool = new Pool({
 });
 
 let mongo;
-console.log(mongoUrl);
-MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
+MongoClient.connect(mongo_, { useUnifiedTopology: true })
   .then((client) => {
-    mongo = client.db(mongoDatabase);
+    mongo = client;
   })
   .catch((err) => {
     console.log('error mongoclient');
     console.log(err);
+  });
+MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
+  .then((client) => {
+    mongo = client;
+  })
+  .catch((err) => {
+    console.log('error mongoclient');
+    console.log(err);
+    console.log(mongoUrl);
   });
 
 module.exports = {
