@@ -17,6 +17,7 @@ const pool = new Pool({
   port: 5432,
 });
 
+let mongo;
 MongoClient.connect(mongoUrl, { useUnifiedTopology: true })
   .then((client) => {
     mongo = client;

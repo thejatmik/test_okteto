@@ -25,6 +25,7 @@ app.get('/pg', async (req, res) => {
     });
   }
 });
+
 app.get('/mongo', async (req, res) => {
   try {
     let mongoResp = await mongo.stats();
@@ -37,16 +38,18 @@ app.get('/mongo', async (req, res) => {
     res.status(500).json({
       name: 'api_user',
       time: new Date(),
-      error,
+      error: error.message,
     });
   }
 });
+
 app.get('/env', (req, res) => {
   res.status(200).json({
     name: 'api_user',
     env: process.env,
   });
 });
+
 app.get('/', (req, res) => {
   res.status(200).json({
     name: 'api_user',
