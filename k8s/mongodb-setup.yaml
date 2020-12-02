@@ -3,64 +3,48 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb01
+  labels:
+    app: mongodb01
 spec:
-  ports:
-  - port: 27017
-    targetPort: 27017
+  clusterIP: None
   selector:
     app: mongodb01
-  clusterIP: None
 ---
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: mongodb01
-spec:
-  serviceName: mongodb01
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mongodb01
-  template:
-    metadata:
-      labels:
+  apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: mongodb01
+  spec:
+    serviceName: mongodb01
+    replicas: 1
+    selector:
+      matchLabels:
         app: mongodb01
-    spec:
-      securityContext:
-        fsGroup: 1001
-      initContainers:
-      containers:
-      - name: mongodb
-        image: docker.io/bitnami/mongodb:4.0.12-debian-9-r43
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 1001
-        env:
-        - name: MONGODB_PASSWORD
-          value: "password"
-        - name: MONGODB_ROOT_PASSWORD
-          value: "password"
-        - name: MONGODB_USERNAME
-          value: "okteto"
-        - name: MONGODB_SYSTEM_LOG_VERBOSITY
-          value: "0"
-        - name: MONGODB_DISABLE_SYSTEM_LOG
-          value: "no"
-        - name: MONGODB_DATABASE
-          value: "okteto"
-        - name: MONGODB_ENABLE_IPV6
-          value: "no"
-        - name: MONGODB_ENABLE_DIRECTORY_PER_DB
-          value: "no"
-        ports:
-        - name: mongodb
-          containerPort: 27017
-        volumeMounts:
-        - name: data
-          mountPath: /bitnami/mongodb
-          subPath:
-        resources:
-          {}
-      volumes:
-      - name: data
-        emptyDir: {}
+    template:
+      metadata:
+        labels:
+          app: mongodb01
+      spec:
+        containers:
+        - name: mongodb-standalone
+          image: docker.io/mongo:bionic
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME_FILE
+              value: /etc/mongodb/admin/MONGO_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD_FILE
+              value: /etc/mongodb/admin/MONGO_ROOT_PASSWORD
+          volumeMounts:
+          - name: mongodb
+            mountPath: /etc/mongodb
+            readOnly: true
+          volumes:
+          - name: mongodb
+            secret:
+              secretName: mongodb
+              items:
+              - key: MONGO_ROOT_USERNAME
+                path: admin/MONGO_ROOT_USERNAME
+                mode: 0444
+              - key: MONGO_ROOT_PASSWORD
+                path: admin/MONGO_ROOT_PASSWORD
+                mode: 0444
