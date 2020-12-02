@@ -32,9 +32,15 @@ spec:
         - containerPort: 6968
         env:
         - name: MONGODB_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: MONGO_ROOT_PASSWORD
         - name: MONGODB_USERNAME
-          value: "okteto"
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: MONGO_ROOT_USERNAME
         - name: MONGODB_DATABASE
           value: "okteto"
         - name: MONGODB_HOST
