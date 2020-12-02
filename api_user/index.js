@@ -1,10 +1,9 @@
 const express = require('express');
 const {
   pool,
+  connectMongo,
+  mongo: mongo_,
 } = require('./dbConn.js');
-
-require('./dbConn.js').connectMongo();
-const mongo = require('./dbConn.js').mongo();
 
 const app = express();
 const PORT = 6968;
@@ -29,23 +28,30 @@ app.get('/pg', async (req, res) => {
   }
 });
 
-app.get('/mongo', async (req, res) => {
-  try {
-    let mongoResp = await mongo.stats();
-    res.status(200).json({
-      name: 'api_user',
-      time: new Date(),
-      mongoResp,
+connectMongo()
+  .then(async () => {
+    let mongo = await mongo_();
+    app.get('/mongo', async (req, res) => {
+      try {
+        let mongoResp = await mongo.stats();
+        res.status(200).json({
+          name: 'api_user',
+          time: new Date(),
+          mongoResp,
+        });
+      } catch (error) {
+        res.status(500).json({
+          name: 'api_user',
+          time: new Date(),
+          error: error.message,
+        });
+      }
     });
-  } catch (error) {
-    res.status(500).json({
-      name: 'api_user',
-      time: new Date(),
-      error: error.message,
-    });
-  }
-});
 
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 app.get('/env', (req, res) => {
   res.status(200).json({
     name: 'api_user',

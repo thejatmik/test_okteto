@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+if (dotenv) dotenv.config();
 const {Pool} = require('pg');
 const {MongoClient} = require('mongodb');
 
@@ -18,18 +20,17 @@ const pool = new Pool({
   port: 5432,
 });
 
-let mongoDB;
-// let mongoClient;
+let mongo;
 module.exports = {
   pool,
-  connectMongo: () => {
-    return MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-      .then((client) => {
-        // mongoClient = client;
-        mongoDB = client.db(mongoDatabase);
+  connectMongo: function () {
+    return MongoClient.connect(mongo_, {useNewUrlParser: true, useUnifiedTopology: true})
+      .then(async (client) => {
+        mongo = client;
+        mongo = await client.db(mongoDatabase);
       });
   },
-  mongo: () => {
-    return mongoDB;
+  mongo: async function () {
+    return mongo;
   },
 };
