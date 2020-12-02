@@ -24,7 +24,7 @@ let mongo;
 module.exports = {
   pool,
   connectMongo: function () {
-    return MongoClient.connect(mongo_, {useNewUrlParser: true, useUnifiedTopology: true})
+    return MongoClient.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
       .then(async (client) => {
         mongo = client;
         mongo = await client.db(mongoDatabase);
