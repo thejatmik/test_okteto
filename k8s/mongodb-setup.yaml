@@ -37,14 +37,14 @@ spec:
           - name: mongodb
             mountPath: /etc/mongodb
             readOnly: true
-          volumes:
-          - name: mongodb
-            secret:
-              secretName: mongodb
-              items:
-              - key: MONGO_ROOT_USERNAME
-                path: admin/MONGO_ROOT_USERNAME
-                mode: 0444
-              - key: MONGO_ROOT_PASSWORD
-                path: admin/MONGO_ROOT_PASSWORD
-                mode: 0444
+        volumes:
+        - name: mongodb
+          secret:
+            secretName: mongodb
+            items:
+            - key: MONGO_ROOT_USERNAME
+              path: admin/MONGO_ROOT_USERNAME
+              mode: 0444
+            - key: MONGO_ROOT_PASSWORD
+              path: admin/MONGO_ROOT_PASSWORD
+              mode: 0444
