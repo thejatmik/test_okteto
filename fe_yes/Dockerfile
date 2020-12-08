@@ -1,5 +1,6 @@
 FROM node:lts-alpine as build-stage
 
+RUN mkdir -p /app/node_modules
 # RUN npm install -g http-server
 
 WORKDIR /app
