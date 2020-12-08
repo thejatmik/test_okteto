@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fe-yes
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+  selector:
+    app: fe-yes
+---
+apiVersion: apps/v1
+kind: Deployment
+metaata:
+  name: fe-yes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fe-yes
+  template:
+    metadata:
+      labels:
+        app: fe-yes
+    spec:
+      containers:
+      - name: fe-yes
+        images: registry.cloud.okteto.net/thejatmik/fe_yes:latest
+        ports:
+        - containerPort: 80

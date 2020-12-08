@@ -1,4 +1,5 @@
 deploy:
   - okteto build -t registry.cloud.okteto.net/thejatmik/api_text:latest ./api_text
   - okteto build -t registry.cloud.okteto.net/thejatmik/api_user:latest ./api_user
+  - okteto build -t registry.cloud.okteto.net/thejatmik/fe_yes:latest ./fe_yes
   - kubectl apply -f k8s
