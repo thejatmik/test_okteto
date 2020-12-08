@@ -27,6 +27,6 @@ spec:
     spec:
       containers:
       - name: fe-yes
-        images: registry.cloud.okteto.net/thejatmik/fe_yes:latest
+        image: registry.cloud.okteto.net/thejatmik/fe_yes:latest
         ports:
         - containerPort: 80
