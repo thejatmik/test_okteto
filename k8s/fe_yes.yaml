@@ -30,3 +30,6 @@ spec:
         image: registry.cloud.okteto.net/thejatmik/fe_yes:latest
         ports:
         - containerPort: 80
+        env:
+        - name: VUE_APP_USER_API
+          value: user-api
