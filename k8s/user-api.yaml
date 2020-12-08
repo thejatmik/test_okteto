@@ -10,6 +10,7 @@ spec:
     port: 6968
   selector:
     app: user-api
+  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -32,4 +32,4 @@ spec:
         - containerPort: 80
         env:
         - name: VUE_APP_USER_API
-          value: api-user
+          value: user-api
