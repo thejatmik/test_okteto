@@ -30,4 +30,4 @@ jobs:
         context: ./api_user
         file: ./api_user/Dockerfile
         push: true
-        tags: user/app:latest
+        tags: thejatmik/okt-user-api:latest
