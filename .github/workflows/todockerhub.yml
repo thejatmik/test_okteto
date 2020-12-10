@@ -27,7 +27,7 @@ jobs:
     - name: Build and push user-api
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./api_user/Dockerfile
+        context: ./api_user
+        file: ./Dockerfile
         push: true
         tags: user/app:latest
