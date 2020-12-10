@@ -28,6 +28,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ./api_user
-        file: ./Dockerfile
+        file: ./api_user/Dockerfile
         push: true
         tags: user/app:latest
