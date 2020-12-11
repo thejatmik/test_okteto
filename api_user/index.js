@@ -5,6 +5,7 @@ const {
   connectMongo,
   mongo: mongo_,
 } = require('./dbConn.js');
+const mainRouter = require('./routers/index.js');
 
 const app = express();
 const PORT = 6968;
@@ -49,7 +50,6 @@ connectMongo()
         });
       }
     });
-
   })
   .catch((error) => {
     console.log(error);
@@ -61,12 +61,9 @@ app.get('/env', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    name: 'api_user',
-  });
-});
+app.use('/api', mainRouter);
 
 app.listen(PORT, () => {
+  console.clear();
   console.log(`on port ${PORT}`);
 });
