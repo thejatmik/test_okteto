@@ -25,6 +25,7 @@ jobs:
       uses: okteto/destroy-pipeline@master
   
   schedule_deploy:
+    needs: schedule_destroy
     runs-on: ubuntu-latest
     steps:
     - name: checkout
